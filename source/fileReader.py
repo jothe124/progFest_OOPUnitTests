@@ -49,11 +49,16 @@ class FileReader:
 		self.metadata["Header"] = tuple(header)
 		for line in lines[self.header_lines + 1:]:
 			data.append(list(map(float, line.split(" "))))
-		return np.array(data),
+		return np.array(data)
 
 
 if __name__ == '__main__':
 	f = r"2022-03-06_test.csv"
+	fr = FileReader(f)
+	print(fr.metadata)
+	print(fr.read_file())
+	print(fr.metadata)
+	f = r"2022-03-06_test.txt"
 	fr = FileReader(f)
 	print(fr.metadata)
 	print(fr.read_file())
