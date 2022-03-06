@@ -18,7 +18,7 @@ class FileReader:
 		self.date = datetime.date(*map(int, self.date.split("-")))
 		self.name, self.extension = self.fullname.split(".")
 		self.metadata = {"Nom": self.name, "Date": self.date, "Dossier": tuple(self.parent_directories),
-						 "Type": self.extension, "Header": None, "Colonnes": None}
+						 "Type": self.extension, "Header": ("Fichier non lu",), "Colonnes": ("Fichier non lu",)}
 		self.header_lines = header_lines
 
 	def read_file(self):
@@ -32,7 +32,7 @@ class FileReader:
 		with open(self.filepath, "r") as file:
 			lines = file.readlines()
 		header = list(map(lambda x: x.strip(), lines[:self.header_lines]))
-		colonnes = lines[self.header_lines + 1].strip().split(",")
+		colonnes = lines[self.header_lines].strip().split(",")
 		self.metadata["Colonnes"] = tuple(colonnes)
 		self.metadata["Header"] = tuple(header)
 		for line in lines[self.header_lines + 1:]:
@@ -44,7 +44,7 @@ class FileReader:
 		with open(self.filepath, "r") as file:
 			lines = file.readlines()
 		header = list(map(lambda x: x.strip(), lines[:self.header_lines]))
-		colonnes = lines[self.header_lines + 1].strip().split(" ")
+		colonnes = lines[self.header_lines].strip().split(" ")
 		self.metadata["Colonnes"] = tuple(colonnes)
 		self.metadata["Header"] = tuple(header)
 		for line in lines[self.header_lines + 1:]:
