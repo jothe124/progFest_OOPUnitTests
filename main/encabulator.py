@@ -17,9 +17,9 @@ class EncabulatorData:
 		self.filename = split[-1]
 		self.date, self.fullname = self.filename.split("_")
 		self.name, self.extension = self.fullname.split(".")
-		self.metadata = {"Nom": self.name, "Date": self.date, "Dossier": tuple(self.parent_directories),
-						 "Type": self.extension, "Header": ("Fichier non lu",), "Colonnes": ("Fichier non lu",),
-						 "Apparatus": "Fichier non lu"}
+		self.metadata = {"Name": self.name, "Date": self.date, "Folder": tuple(self.parent_directories),
+						 "Type": self.extension, "Header": ("File not read",), "Columns": ("File not read",),
+						 "Apparatus": "File not read"}
 		self.data = None
 
 	def read_file(self):
@@ -34,7 +34,7 @@ class EncabulatorData:
 			lines = file.readlines()
 		header = list(map(lambda x: x.strip(), lines[:2]))
 		colonnes = lines[2].strip().split(",")
-		self.metadata["Colonnes"] = tuple(colonnes)
+		self.metadata["Columns"] = tuple(colonnes)
 		self.metadata["Header"] = tuple(header)
 		self.metadata["Apparatus"] = header[-1].split(" = ")[-1]
 		for line in lines[3:]:
@@ -48,7 +48,7 @@ class EncabulatorData:
 			lines = file.readlines()
 		header = list(map(lambda x: x.strip(), lines[:2]))
 		colonnes = lines[2].strip().split(" ")
-		self.metadata["Colonnes"] = tuple(colonnes)
+		self.metadata["Columns"] = tuple(colonnes)
 		self.metadata["Header"] = tuple(header)
 		self.metadata["Apparatus"] = header[-1].split(" = ")[-1]
 		for line in lines[3:]:
@@ -61,11 +61,11 @@ class EncabulatorData:
 		return self.data[:, 0]
 
 	@property
-	def encabulator_data(self):
+	def encabulation(self):
 		return self.data[:, 1]
 
 	def __str__(self):
-		msg = f"EncabulatorData de `{self.filename}`"
+		msg = f"EncabulatorData from file `{self.filename}`"
 		return msg
 
 
@@ -91,7 +91,7 @@ class EncabulatorDataset:
 
 	def __str__(self):
 		if self.encabulator_readers is None:
-			return f"Ce EncabulatorDataset est vide ({repr(self)}))"
+			return f"Ce EncabulatorDataset is empty ({repr(self)}))"
 		return str(self.encabulator_readers)
 
 
@@ -105,7 +105,7 @@ class EncabulatorPlotter:
 			encabulator_reader.read_all(exceptions)
 			data = encabulator_reader.encabulator_readers
 		else:
-			raise TypeError(f"Type `{type(encabulator_reader)}` n'est pas supporté.")
+			raise TypeError(f"Type `{type(encabulator_reader)}` is not supported.")
 		self.data = data
 
 	def plot(self, save_name: str = None, show: bool = True):
@@ -117,9 +117,9 @@ class EncabulatorPlotter:
 				readers = [readers]
 			print(readers)
 			for reader in readers:
-				axes[count].scatter(reader.time, reader.encabulator_data, label=reader.date, alpha=0.2)
+				axes[count].scatter(reader.time, reader.encabulation, label=reader.date, alpha=0.2)
 			axes[count].legend()
-			axes[count].set_xlabel("Temps [ns]")
+			axes[count].set_xlabel("Time [ns]")
 			axes[count].set_ylabel("Encabulator []")
 			axes[count].set_title(apparatus)
 			count += 1
@@ -168,12 +168,14 @@ class EncabulatorStats:
 
 
 if __name__ == '__main__':
+
+	path = "../data/2022-02-31_experiment1.csv"
+	data = EncabulatorData(path)
+	plotter = EncabulatorPlotter(data)
+	plotter.plot()
+
 	dir = "../data"
-	ers = EncabulatorDataset(dir)
-	ers.read_all()
-	ep = EncabulatorPlotter(ers)
-	ep.plot()
-	path = "../data/2022-02-30_experiment1.txt"
-	er = EncabulatorData(path)
-	ep =EncabulatorPlotter(er)
-	ep.plot()
+	# ers = EncabulatorDataset(dir)
+	# ers.read_all()
+	# ep = EncabulatorPlotter(ers)
+	# ep.plot()
