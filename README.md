@@ -29,7 +29,7 @@ Avant votre arrivée chez *Rockwell*, personne n'avait de compétences en progra
 1. Définir une classe `EncabulatorData` qui prend en entrée (dans la méthode `__init__`) le `path` vers un fichier à importer en mémoire. Ses attributs devraient typiquement être le nom du fichier `name`, les données numériques `data` (vides initialement) ainsi que le `metadata` présent en *header* des fichiers (nom de l'appareil, date d'expérimentation).
 2. Ajouter une méthode `read_file` qui ouvre le fichier (avec la fonction de base `open()`) et qui effectue l'extraction de son contenu. La méthode devrait faire la différence entre les extensions `.txt` et `.csv`. **Conseil**: Les méthodes pour manipuler des chaines de caractères (`split()`, `strip()`, etc) vous seront utiles pour décortiquer chacune des lignes.
 3. *Gare à la poussière!* Les fichiers `.txt` sont reconnus pour accumuler de la poussière au fil du temps. Il se peut que certains fichiers soient poussiéreux et que des éléments indésirables doivent être ignorés lors de la lecture des valeurs numériques.
-4. Ajouter une méthode `__getitem__` qui permet d'accéder aux valeurs numériques contenues par l'objet. Ceci facilitera la manipulation d'un objet `EncabulatorData` par les autres classes.
+4. Ajouter une méthode `__getitem__` qui permet d'accéder aux valeurs numériques contenues par l'objet en *overridant* l'opérateur d'indexation `[]`. Ceci facilitera la manipulation d'un objet `EncabulatorData` par les autres classes.
 
 #### Étape #2 - Visualiser le contenu d'un fichier
 Afin de valider que le contenu du fichier a bien été lu et interprété, il vous faut maintenant afficher un graphique arborant le contenu numérique du fichier, ainsi que les métadonnées textuelles.
