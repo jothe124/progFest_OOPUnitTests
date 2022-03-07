@@ -1,6 +1,4 @@
 import numpy as np
-import pandas as pd
-import datetime
 
 
 class FileReader:
@@ -15,7 +13,6 @@ class FileReader:
 		self.parent_directories = split[:-1]
 		self.filename = split[-1]
 		self.date, self.fullname = self.filename.split(name_metadata_sep)
-		self.date = datetime.date(*map(int, self.date.split("-")))
 		self.name, self.extension = self.fullname.split(".")
 		self.metadata = {"Nom": self.name, "Date": self.date, "Dossier": tuple(self.parent_directories),
 						 "Type": self.extension, "Header": ("Fichier non lu",), "Colonnes": ("Fichier non lu",)}
