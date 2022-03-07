@@ -13,6 +13,12 @@ Liens importants:
 - *Rockwell Automation*: https://www.rockwellautomation.com/en-us.html.
 - Description de produit, *Rockwell Retro Encabulator*: https://www.youtube.com/watch?v=RXJKdh1KZ0w.
 
+#### Importation des modules
+Vos patrons ne sont pas trop sévères quant à la modalité programmatoire utilisée pour réaliser le mandat. Vous pouvez donc utiliser un `Jupyter notebook` ou coder dans un fichier `.py`, au choix. Avant de commencer, veuillez simplement importer les modules requis à l'aide des commandes suivantes:
+
+`import numpy as np`
+`import matplotlib.pyplot as plt`
+
 #### Étape #1 - Importer un fichier
 Avant votre arrivée chez *Rockwell*, personne n'avait de compétences en programmation. Ainsi, les résultats de plusieurs expériences d'encabulation se sont accumulés sur le serveur, sans toutefois avoir été analysés. Dans le dossier `Data`, vous trouverez les données de dix expériences effectuées en deux jours à la fin du mois dernier. La moitié des expériences est sauvegardée en format `.txt`, tandis que l'autre moitié est en format `.csv`.
 1. Définissez une classe `EncabulatorData` qui prend en entrée (méthode `__init__`) le `path` vers un fichier à importer en mémoire. Ses attributs devraient typiquement être le nom du fichier `name`, les données numériques `data` (vides initialement) ainsi que le `metadata` présent en *header* des fichiers (nom de l'appareil, date d'expérimentation).
@@ -27,10 +33,11 @@ Afin de valider que le contenu du fichier a bien été lu et interprété, il vo
 4. Peaufiner les éléments du graphique afin qu'il soit plaisant à regarder. Les patrons sont très sévères à ce sujet.
 
 #### Étape #3 - Compiler les données des expériences
-Les réplicats des expériences ont été effectués afin d'observer le comportement moyen d'encabulation au fil du temps. Vous devez maintenant compiler les résultats des expériences menées sur chacun des appareils, puis afficher la courbe moyenne, qui devrait être moins bruitée que les expériences individuelles.
+Plusieurs réplicats des expériences ont été effectués afin d'observer le comportement moyen d'encabulation au fil du temps. Vous devez maintenant compiler les résultats des expériences menées sur chacun des appareils, puis afficher la courbe moyenne, qui devrait être moins bruitée que les expériences individuelles.
 1. Définir une classe `Dataset` qui contient en attribut les objets `Data` provenant d'un même appareil.
-2. Sur un seul graphique, afficher le nuage de points (`plt.scatter`) de toutes les expériences, ainsi que la courbe moyenne. Au besoin, une expérience peut être exclue si les données sont jugées inadéquates.
-3. Ajuster les paramètres d'affichage (`alpha`, `linewidth`, etc) afin que la figure soit lisible. 
+2. Pour compiler la courbe moyenne, inscrire les valeurs des expériences dans un `np.array` de format `NxT`, où N est le nombre d'expériences, et `T` est le nombre d'échantillons temporels. Au besoin, une expérience peut être exclue si les données sont jugées inadéquates.
+4.  Sur un seul graphique, afficher le nuage de points (`plt.scatter`) de toutes les expériences, ainsi que la courbe moyenne.
+5. Ajuster les paramètres d'affichage (`alpha`, `linewidth`, etc) afin que la figure soit lisible. 
 
 #### Étape #4 - Sauvegarder les résultats
 Vos patrons ont bien hâte d'enfin pouvoir observer, après toutes ces années, les signaux générés par leurs appareils. Vous devez leur envoyer les figures générées en format haute-résolution, ainsi qu'exporter les valeurs de la courbe moyenne.
