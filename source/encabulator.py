@@ -111,7 +111,7 @@ class EncabulatorPlotter:
 			raise TypeError(f"Type `{type(encabulator_reader)}` n'est pas supporté.")
 		self.data = data
 
-	def plot(self):
+	def plot(self, savename: str = None, show: bool = True):
 		# TODO save
 		fig, axes = plt.subplots(len(self.data))
 		axes = np.ravel(axes)
@@ -119,9 +119,15 @@ class EncabulatorPlotter:
 		for apparatus, readers in self.data.items():
 			for reader in readers:
 				axes[count].plot(reader.time, reader.encabulator_data, label=reader.date)
+			axes[count].legend()
+			axes[count].set_xlabel("Temps [ns]")
+			axes[count].set_ylabel("Encabulator []")
+			axes[count].set_title(apparatus)
 			count += 1
-		plt.show()
-
+		if show:
+			plt.show()
+		if savename is not None:
+			plt.savefig(savename)
 
 	def plot_avg(self, ax: plt.Axes = None):
 		# TODO save
