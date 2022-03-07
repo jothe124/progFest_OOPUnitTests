@@ -6,7 +6,7 @@
 
 Cet atelier a été développé par Antoine Légaré et Gabriel Genest.
 
-Les étapes ci-dessous servent à vous guider durant l'atelier. Rien ne vous empêche d'en omettre quelques-unes, de nommer les variables autrement, ou même de faire autre chose complètement (par exemple, de faire une classe `Cat` et une classe `Dog`). Par contre, vous devez garder en tête que vos employeurs attendent un certain rendement de votre part. **Si vous êtes bloqués, un code déjà fonctionnel est fourni dans le dossier** `reference`.
+Les étapes ci-dessous servent à vous guider durant l'atelier. Rien ne vous empêche d'en omettre quelques-unes, de nommer les variables autrement, ou même de faire autre chose complètement (par exemple, de faire une classe `Cat` et une classe `Dog`). Par contre, vous devez garder en tête que vos employeurs attendent un certain rendement de votre part. **Si vous êtes bloqués, un code déjà fonctionnel est fourni dans le dossier** `reference`. Vous êtes fortement encouragés à effectuer des recherches sur internet, par exemple en recherchant seulement le nom d'une fonction, afin d'obtenir très rapidement des exemples de code qui sont probablement suffisants.
 
 #### Contexte
 
@@ -54,7 +54,7 @@ Vos données étant maintenant réunies au même endroit dans un objet `Encabula
 #### Étape #5 - Sauvegarder les résultats
 Vos patrons ont bien hâte d'enfin pouvoir observer, après toutes ces années, les signaux générés par leurs appareils. Vous devez leur envoyer les figures générées en format haute-résolution.
 
-1. Ajouter une méthode `save_figure` à la classe `EncabulatorPlotter` qui exporte une figure en format `.pdf`. Pour ce faire, il suffit de simplement utiliser la fonction `plt.savefig`.
+1. Ajouter une méthode `save_figure` à la classe `EncabulatorPlotter` qui exporte une figure en format `.pdf`. Pour ce faire, il suffit de simplement utiliser la fonction `plt.savefig` tout en spécifiant la bonne extension de fichier.
 2. Montrez vos résultats à vos supérieurs.
 
 #### Étape #6 (optionnelle) - Sécuriser le code
