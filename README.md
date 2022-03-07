@@ -18,7 +18,6 @@ Afin de valider que le contenu du fichier a bien été lu et interprété, il vo
 #### Étape #3 - Compiler les données des expériences
 Les réplicats des expériences ont été effectués afin d'observer le comportement moyen d'encabulation au fil du temps. Vous devez maintenant compiler les résultats des expériences menées sur chacun des appareils, puis afficher la courbe moyenne, qui devrait être moins bruitée que les expériences individuelles.
 1. Définir une classe `Dataset` qui contient en attribut les objets `Data` provenant d'un même appareil.
-2. Sur un seul graphique, afficher le nuage de points (`plt.scatter`) de toutes les expériences, ainsi que la courbe moyenne. 
-- Au besoin, une expérience peut être exclue si les données sont jugées inadéquates.
+2. Sur un seul graphique, afficher le nuage de points (`plt.scatter`) de toutes les expériences, ainsi que la courbe moyenne. Au besoin, une expérience peut être exclue si les données sont jugées inadéquates.
 3. Ajuster les paramètres d'affichage (`alpha`, `linewidth`, etc) afin que la figure soit lisible. 
  
