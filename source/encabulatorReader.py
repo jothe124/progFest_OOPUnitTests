@@ -2,7 +2,7 @@ import numpy as np
 import os
 
 
-class FileReader:
+class EncabulatorReader:
 
 	def __init__(self, filepath: str, name_metadata_sep: str = "_", header_lines: int = 2):
 		self.filepath = filepath
@@ -18,6 +18,7 @@ class FileReader:
 		self.metadata = {"Nom": self.name, "Date": self.date, "Dossier": tuple(self.parent_directories),
 						 "Type": self.extension, "Header": ("Fichier non lu",), "Colonnes": ("Fichier non lu",)}
 		self.header_lines = header_lines
+		self.data = None
 
 	def read_file(self):
 		if self.extension.lower() == "csv":
@@ -35,7 +36,8 @@ class FileReader:
 		self.metadata["Header"] = tuple(header)
 		for line in lines[self.header_lines + 1:]:
 			data.append(list(map(float, line.split(","))))
-		return np.array(data)
+		self.data = np.array(data)
+		return self.data
 
 	def _read_txt(self):
 		data = []
@@ -47,21 +49,44 @@ class FileReader:
 		self.metadata["Header"] = tuple(header)
 		for line in lines[self.header_lines + 1:]:
 			data.append(list(map(float, line.split(" "))))
-		return np.array(data)
+		self.data = np.array(data)
+		return self.data
+
+	def __str__(self):
+		msg = f"EncabulatorReader de `{self.filename}`"
+		return msg
+
+
+class MultipleEncabulatorReader:
+
+	def __init__(self, dir: str, name_metadata_sep: str = "_", header_lines: int = 2):
+		self.dir = dir
+		self.name_metadata_sep = name_metadata_sep
+		self.header_lines = header_lines
+		self.encabulator_readers = None
+
+	def read_all(self, exceptions: tuple = ()):
+		encabulator_readers = dict()
+		all_files = os.listdir(self.dir)
+		for file in all_files:
+			if file in exceptions:
+				continue
+			er = EncabulatorReader(os.path.join(self.dir, file), self.name_metadata_sep, self.header_lines)
+			er.read_file()
+			ers = encabulator_readers.setdefault(er.date, set())
+			ers.add(er)
+		self.encabulator_readers = encabulator_readers
+		return self.encabulator_readers
+
+	def __str__(self):
+		if self.encabulator_readers is None:
+			return f"Ce MultipleEncabulatorReader est vide ({repr(self)}))"
+		return str(self.encabulator_readers)
 
 
 if __name__ == '__main__':
 	path = r"C:\Users\goubi\Documents\GitHub\progFest_OOPUnitTests\data"
-	for file in os.listdir(path):
-		newName = file.replace(".txt", ".csv")
-		if "31" not in file:
-			continue
-		with open(os.path.join(path, file), "r") as _file:
-			lines = _file.readlines()
-			writelines = [*lines[:2]]
-			for line in lines[2:]:
-				new_line = line.replace(" ", ",")
-				writelines.append(new_line)
-		with open(os.path.join(path, newName), "w") as _file:
-			_file.writelines(writelines)
-
+	dir = "../data"
+	ers = MultipleEncabulatorReader(dir)
+	ers.read_all()
+	print(ers)
