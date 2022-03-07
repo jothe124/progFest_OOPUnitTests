@@ -52,7 +52,8 @@ class EncabulatorData:
 		self.metadata["Header"] = tuple(header)
 		self.metadata["Apparatus"] = header[-1].split(" = ")[-1]
 		for line in lines[3:]:
-			data.append(list(map(float, line.split(" "))))
+			if 'dust' not in line:
+				data.append(list(map(float, line.split(" "))))
 		self.data = np.array(data)
 		return self.data
 
@@ -120,7 +121,7 @@ class EncabulatorPlotter:
 				axes[count].scatter(reader.time, reader.encabulation, label=reader.date, alpha=0.2)
 			axes[count].legend()
 			axes[count].set_xlabel("Time [ns]")
-			axes[count].set_ylabel("Encabulator []")
+			axes[count].set_ylabel("Encabulation [?]")
 			axes[count].set_title(apparatus)
 			count += 1
 		if show:
@@ -169,12 +170,12 @@ class EncabulatorStats:
 
 if __name__ == '__main__':
 
-	path = "../data/2022-02-31_experiment1.csv"
+	path = "../data/2022-02-30_experiment5.txt"
 	data = EncabulatorData(path)
 	plotter = EncabulatorPlotter(data)
 	plotter.plot()
 
-	dir = "../data"
+	# dir = "../data"
 	# ers = EncabulatorDataset(dir)
 	# ers.read_all()
 	# ep = EncabulatorPlotter(ers)
