@@ -20,4 +20,7 @@ Les réplicats des expériences ont été effectués afin d'observer le comporte
 1. Définir une classe `Dataset` qui contient en attribut les objets `Data` provenant d'un même appareil.
 2. Sur un seul graphique, afficher le nuage de points (`plt.scatter`) de toutes les expériences, ainsi que la courbe moyenne. Au besoin, une expérience peut être exclue si les données sont jugées inadéquates.
 3. Ajuster les paramètres d'affichage (`alpha`, `linewidth`, etc) afin que la figure soit lisible. 
+
+#### Étape #4 - Sauvegarder les résultats
+Vos patrons ont bien hâte d'enfin pouvoir observer, après toutes ces années, les signaux générés par leurs appareils. Vous devez leur envoyer les figures générées en format haute-résolution, ainsi qu'exporter les valeurs de la courbe moyenne.
  
