@@ -1,2 +1,2 @@
-# Atelier - Programmation objet et tests unitaires
-Code pour l'atelier OOP & *Unit Tests* dans le cadre du progFest 2022 de DCC Lab.
+# Atelier - Programmation orientée-objet et tests unitaires
+Vous êtes un.e ingénieur.e venant tout juste d'être engagé par Rockwell Automation. Pour votre premier mandat, on vous a ordonné d'écrire un  module Python permettant d'importer puis d'analyser les données générées lors d'expériences d'*encabulation* qui sont menées quotidiennement chez Rockwell Automation. Plus spécifiquement, vous avez été assigné au fameux *Retro Encabulator* ainsi qu'à son modèle réduit, le *Micro Encabulator* (https://www.youtube.com/watch?v=RXJKdh1KZ0w).
