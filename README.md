@@ -3,6 +3,9 @@
 ![Logo](/images/LogoProgFest.png)
 
 #### Avant-propos
+
+Cet atelier a été développé par Antoine Légaré et Gabriel Genest.
+
 Les étapes ci-dessous servent à vous guider durant l'atelier. Rien ne vous empêche d'en omettre quelques-unes, de nommer les variables autrement, ou même de faire autre chose complètement (par exemple, de faire une classe `Cat` et une classe `Dog`). Par contre, vous devez garder en tête que vos employeurs attendent un certain rendement de votre part. **Si vous êtes bloqués, un code déjà fonctionnel est fourni dans le dossier** `reference`.
 
 #### Contexte
