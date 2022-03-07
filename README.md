@@ -1,6 +1,6 @@
 # Atelier - Programmation orientée-objet et tests unitaires
 
-![alt text](https://github.com/AntoineLegare/progFest_OOPUnitTests/blob/main/images/ProgFestLogo.png?raw=true)
+![alt text]https://github.com/AntoineLegare/progFest_OOPUnitTests/tree/main/images/ProgFestLogo.png?raw=true)
 
 Vous venez tout juste d'être engagé par *Rockwell Automation*, une compagnie spécialisée en automation industrielle. Pour votre premier mandat, on vous a ordonné d'écrire un  module Python permettant d'importer puis d'analyser les données générées lors d'expériences d'encabulation qui sont menées quotidiennement chez *Rockwell*. Plus spécifiquement, vous avez été assigné au fameux *Retro Encabulator* ainsi qu'à son modèle réduit, le *Micro Encabulator*.
 
