@@ -17,6 +17,7 @@ Liens importants:
 Vos patrons ne sont pas trop sévères quant à la modalité programmatoire utilisée pour réaliser le mandat. Vous pouvez donc utiliser un `Jupyter notebook` ou coder dans un fichier `.py`, au choix. Avant de commencer, veuillez simplement importer les modules requis à l'aide des commandes suivantes:
 
 `import numpy as np`
+
 `import matplotlib.pyplot as plt`
 
 #### Étape #1 - Importer un fichier
