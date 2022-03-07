@@ -53,13 +53,4 @@ class FileReader:
 
 
 if __name__ == '__main__':
-	f = r"2022-03-06_test.csv"
-	fr = FileReader(f)
-	print(fr.metadata)
-	print(fr.read_file())
-	print(fr.metadata)
-	f = r"2022-03-06_test.txt"
-	fr = FileReader(f)
-	print(fr.metadata)
-	print(fr.read_file())
-	print(fr.metadata)
+	pass
