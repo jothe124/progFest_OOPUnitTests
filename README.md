@@ -3,7 +3,7 @@
 ![Logo](/images/LogoProgFest.png)
 
 #### Avant-propos
-Les étapes ci-dessous servent à vous guider durant l'atelier. Rien ne vous empêche d'en omettre quelques-unes, de nommer les variables autrement, ou même de faire autre chose complètement (par exemple, de faire une classe `Cat` et une classe `Dog`). Par contre, vous devez garder en tête ce que vos employeurs attendent de vous. **Si vous êtes bloqués, un code déjà fonctionnel** est fourni dans le dossier `reference`.
+Les étapes ci-dessous servent à vous guider durant l'atelier. Rien ne vous empêche d'en omettre quelques-unes, de nommer les variables autrement, ou même de faire autre chose complètement (par exemple, de faire une classe `Cat` et une classe `Dog`). Par contre, vous devez garder en tête que vos employeurs attendent un certain rendement de votre part. **Si vous êtes bloqués, un code déjà fonctionnel est fourni dans le dossier `reference`**.
 
 #### Contexte
 
