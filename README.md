@@ -21,9 +21,10 @@ Avant votre arrivée chez *Rockwell*, personne n'avait de compétences en progra
 
 #### Étape #2 - Visualiser le contenu d'un fichier
 Afin de valider que le contenu du fichier a bien été lu et interprété, il vous faut maintenant afficher un graphique arborant le contenu numérique du fichier, ainsi que les métadonnées textuelles.
-1. Faire un graphique (`plt.plot`) des colonnes 1 et 2 d'un fichier.
-2. Comme titre du graphique (`plt.title`), inscrire la date d'expérimentation ainsi que le nom de l'appareil.
-3. Peaufiner les éléments du graphique afin qu'il soit plaisant à regarder.
+1. Faites une classe `EncabulatorPlotter` qui prend en entrée un objet `EncabulatorData`.
+2. Ajouter une méthode `plot` qui affiche un graphique (utiliser simplement `plt.plot`) du contenu numérique d'un fichier (colonne 1 en x, colonne 2 en y).
+3. Comme titre du graphique (`plt.title`), inscrire la date d'expérimentation ainsi que le nom de l'appareil, qui sont contenus dans l'objet `EncabulatorData`.
+4. Peaufiner les éléments du graphique afin qu'il soit plaisant à regarder. Les patrons sont très sévères à ce sujet.
 
 #### Étape #3 - Compiler les données des expériences
 Les réplicats des expériences ont été effectués afin d'observer le comportement moyen d'encabulation au fil du temps. Vous devez maintenant compiler les résultats des expériences menées sur chacun des appareils, puis afficher la courbe moyenne, qui devrait être moins bruitée que les expériences individuelles.
