@@ -1,4 +1,5 @@
 import numpy as np
+import os
 
 
 class FileReader:
@@ -50,4 +51,17 @@ class FileReader:
 
 
 if __name__ == '__main__':
-	pass
+	path = r"C:\Users\goubi\Documents\GitHub\progFest_OOPUnitTests\data"
+	for file in os.listdir(path):
+		newName = file.replace(".txt", ".csv")
+		if "31" not in file:
+			continue
+		with open(os.path.join(path, file), "r") as _file:
+			lines = _file.readlines()
+			writelines = [*lines[:2]]
+			for line in lines[2:]:
+				new_line = line.replace(" ", ",")
+				writelines.append(new_line)
+		with open(os.path.join(path, newName), "w") as _file:
+			_file.writelines(writelines)
+
